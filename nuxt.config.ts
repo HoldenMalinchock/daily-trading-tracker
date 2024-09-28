@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     propsDestructure: true,
   },
   runtimeConfig: {
-    alpacaApiKey: process.env.ALPACA_API_KEY,
-    alpacaSecretKey: process.env.ALPACA_SECRET_KEY,
+    alpacaApiKey: "",
+    alpacaSecretKey: "",
   },
 })
