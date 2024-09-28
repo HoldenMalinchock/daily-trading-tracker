@@ -10,7 +10,7 @@ export default defineEventHandler(async () => {
   const accountValue = parseInt(alpacaAccount.portfolio_value)
   const percentChange = (accountValue - 100000) / 1000
   return {
-    change: `${percentChange}%`,
+    change: `${percentChange}`,
     total: accountValue,
   }
 })
