@@ -1,3 +1,5 @@
+import { z } from "zod"
+
 export interface AlpacaAccount {
   id: string
   admin_configurations: object | null
@@ -41,3 +43,32 @@ export interface AlpacaAccount {
   intraday_adjustments: string
   pending_reg_taf_fees: string
 }
+
+export const AccountActivitySchema = z.object({
+  id: z.string(),
+  activity_type: z.string(),
+  transaction_time: z.string(),
+  type: z.string(),
+  price: z.string(),
+  qty: z.number(),
+  side: z.string(),
+  symbol: z.string(),
+  leaves_qty: z.string(),
+  order_id: z.string(),
+  cum_qty: z.string(),
+  order_status: z.string(),
+})
+
+export type AccountActivityType = z.infer<typeof AccountActivitySchema>
+
+export const PortfolioHistorySchema = z.object({
+  timestamp: z.array(z.string()),
+  equity: z.array(z.number()),
+  profit_loss: z.array(z.number()),
+  profit_loss_pct: z.array(z.number()),
+  base_value: z.number(),
+  base_value_asof: z.string(),
+  timeframe: z.string(),
+})
+
+export type PortfolioHistoryType = z.infer<typeof PortfolioHistorySchema>

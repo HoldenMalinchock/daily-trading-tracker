@@ -1,6 +1,7 @@
 <template>
-  <div class="flex justify-center">
-    Welcome to the home page where I will track my trading bot progress publicly.
+  <div class="justify-center">
+    <dashboard-chart />
+    <!-- <recent-trades /> -->
   </div>
 </template>
 
