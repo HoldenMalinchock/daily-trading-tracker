@@ -1,20 +1,21 @@
 <template>
   <div class="chart-wrapper">
     <UCard class="flex flex-col p-4">
-      <LineChart
+      <!-- <LineChart
         :data="TableData"
         :categories="categories"
         :height="900"
         :x-formatter="xFormatter"
         x-label="Month"
         y-label="Amount"
-      />
+      /> -->
+      Chart would go here
     </UCard>
   </div>
 </template>
 
 <script setup lang="ts">
-import { LineChart } from "vue-chrts"
+// import { LineChart } from "vue-chrts"
 import type { PortfolioHistoryType } from "~/utils/types/Alpaca"
 
 const { data: portfolioHistory } = await useFetch<PortfolioHistoryType>("/api/getAccountHistory")

@@ -1,11 +1,10 @@
-name: deno-deploy
+name: Deploy
 on:
   push:
-    branches:
-      - main
+    branches: main
   pull_request:
-    branches:
-      - main
+    branches: main
+
 jobs:
   deploy:
     name: Deploy
@@ -14,20 +13,30 @@ jobs:
     permissions:
       id-token: write # Needed for auth with Deno Deploy
       contents: read # Needed to clone the repository
+
     steps:
-      - uses: actions/checkout@v3
-      - run: corepack enable
-      - uses: actions/setup-node@v3
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v2
         with:
-          node-version: 18
-          cache: npm
-      - run: npm install
-      - run: npm run build
-        env:
-          NITRO_PRESET: deno_deploy
-      - name: Deploy to Deno Deploy
+          deno-version: v2.x
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install step
+        run: "npm install"
+
+      - name: Build step
+        run: "NITRO_PRESET=deno-deploy npm run build"
+
+      - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "daily-trading-tracker"
-          entrypoint: server/index.ts
-          root: .output
+          entrypoint: "server/index.ts"
+          root: ".output"

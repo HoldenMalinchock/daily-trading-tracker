@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxt/eslint",
     "@pinia/nuxt",
-    "nuxt-charts",
+    // "nuxt-charts",
   ],
   eslint: {
     config: {
