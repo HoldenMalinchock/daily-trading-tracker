@@ -7,8 +7,11 @@
         </div>
       </template>
       <div class="flex text-lg font-semibold mb-4 justify-between">
-        <div class="text-green-500">
-          $ {{ portfolioHistory?.base_value }}
+        <div class="flex space-x-2">
+          <div>$ {{ portfolioHistory?.base_value }}</div>
+          <div class="text-sm pt-1 text-green-500">
+            +{{ accountPerformance?.change }}%
+          </div>
         </div>
         <div class="flex space-x-2">
           <USelect
@@ -43,6 +46,8 @@ const timeframes = ["1M", "7D", "14D", "21D"]
 
 const timeframe = ref(timeframes[0])
 
+const { data: accountPerformance } = await useFetch("/api/allTimePercent")
+
 const { data: portfolioHistory, refresh, status } = await useFetch<PortfolioHistoryType>("/api/getAccountHistory", {
   query: { period: timeframe },
 })
@@ -58,8 +63,7 @@ const TableData = computed(() => {
     : []
 })
 
-// Why doesnt this refresh the chart when TableData changes?
-
+// Using computed value so chart is reactive to Period changes
 const options = computed<AgChartOptions>(() => ({
   // Data: Data to be displayed in the chart
   data: TableData.value,

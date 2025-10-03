@@ -4,6 +4,3 @@
     <recent-trades />
   </div>
 </template>
-
-<script setup lang="ts">
-</script>

@@ -1,7 +1,6 @@
 import { Pagination, type PaginationType } from "~/utils/types/Pagination"
 import type { AccountActivityType } from "~/utils/types/Alpaca"
 
-// I need to fix this response type to use zod and be true to what this reutrns it really isnt that much of a lift for the return type
 export default defineEventHandler<{ query: PaginationType }> (async (event): Promise<AccountActivityType[]> => {
   const query = await getValidatedQuery(event, query => Pagination.safeParse(query))
   if (!query.success) {

@@ -7,7 +7,6 @@ const querySchema = z.object({
 
 export type queryType = z.infer<typeof querySchema>
 
-// Create my nuxt server api endpoint
 export default defineEventHandler<{ query: queryType }> (async (event): Promise<PortfolioHistoryType> => {
   const query = await getValidatedQuery(event, query => querySchema.safeParse(query))
   if (!query.success) {

@@ -1,5 +1,3 @@
-// Create my nuxt server api endpoint
-
 import type { AlpacaAccount } from "~/utils/types/Alpaca"
 
 export default defineEventHandler(async () => {

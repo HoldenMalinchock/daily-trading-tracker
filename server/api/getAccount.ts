@@ -1,6 +1,5 @@
 import type { AlpacaAccount } from "~/utils/types/Alpaca"
 
-// Create my nuxt server api endpoint
 export default defineEventHandler((): Promise<AlpacaAccount> => {
   const runtimeConfig = useRuntimeConfig()
   // We need to make a request to the alpaca api to get the account information

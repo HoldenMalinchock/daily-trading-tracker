@@ -63,7 +63,7 @@ const updateActiveClass = (index: number) => {
 const navItems = [
   {
     label: "Dashboard",
-    icon: "i-heroicons-folder",
+    icon: "i-heroicons-chart-bar",
     to: "/",
   },
   {
