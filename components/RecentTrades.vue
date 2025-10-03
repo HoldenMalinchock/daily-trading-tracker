@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-center">
-    <UCard class="max-h-screen overflow-y-auto">
+    <UCard class="max-h-full overflow-y-auto">
       <template #header>
         <div class="flex text-lg font-semibold">
           Recent Trades
@@ -8,7 +8,7 @@
         <UTable
           :rows="activities ?? []"
           :columns="columns"
-          class="max-h-screen overflow-y-auto"
+          class="max-h-full overflow-y-auto p-4"
         />
       </template>
     </UCard>
