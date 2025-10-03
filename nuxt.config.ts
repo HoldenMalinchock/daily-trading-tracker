@@ -19,4 +19,10 @@ export default defineNuxtConfig({
     alpacaApiKey: "",
     alpacaSecretKey: "",
   },
+  nitro: {
+    replace: {
+      // replace the browser detection in a server lib
+      "global.userAgent": "undefined",
+    },
+  },
 })
