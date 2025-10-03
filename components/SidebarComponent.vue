@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="p-4">
     <ul>
       <li
         v-for="item, index in navItems"
@@ -62,23 +62,9 @@ const updateActiveClass = (index: number) => {
 
 const navItems = [
   {
-    label: "Home",
+    label: "Dashboard",
     icon: "i-heroicons-folder",
     to: "/",
-    children: [
-      {
-        label: "Dashboard",
-        to: "/dashboard",
-      },
-      {
-        label: "Analytics",
-        to: "/analytics",
-      },
-      {
-        label: "Projects",
-        to: "/projects",
-      },
-    ],
   },
   {
     label: "About",

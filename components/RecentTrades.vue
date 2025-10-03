@@ -1,17 +1,24 @@
 <template>
   <div class="flex justify-center">
-    <UCard>
-      <UTable
-        :rows="activities"
-        :columns="columns"
-        caption=""
-      />
+    <UCard class="max-h-screen overflow-y-auto">
+      <template #header>
+        <div class="flex text-lg font-semibold">
+          Recent Trades
+        </div>
+        <UTable
+          :rows="activities ?? []"
+          :columns="columns"
+          class="max-h-screen overflow-y-auto"
+        />
+      </template>
     </UCard>
   </div>
 </template>
 
 <script setup lang="ts">
-const { data: activities } = await useFetch("/api/getAccountActivities", {
+import type { AccountActivityType } from "~/utils/types/Alpaca"
+
+const { data: activities } = await useFetch<AccountActivityType[]>("/api/getAccountActivities", {
   transform: (activities) => {
     return activities.filter(activity => activity.activity_type !== "FEE")
   },
