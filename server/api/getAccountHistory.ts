@@ -2,7 +2,7 @@ import { z } from "zod"
 import type { PortfolioHistoryType } from "~/utils/types/Alpaca"
 
 const querySchema = z.object({
-  period: z.enum(["7D", "14D", "21D", "1M"]).default("7D"),
+  period: z.enum(["7D", "14D", "21D", "1M"]).default("1M"),
 })
 
 export type queryType = z.infer<typeof querySchema>
