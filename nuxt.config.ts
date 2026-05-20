@@ -15,6 +15,9 @@ export default defineNuxtConfig({
   vue: {
     propsDestructure: true,
   },
+  nitro: {
+    preset: "deno_deploy",
+  },
   runtimeConfig: {
     alpacaApiKey: "",
     alpacaSecretKey: "",
