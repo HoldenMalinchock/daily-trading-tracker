@@ -1,12 +1,6 @@
 <template>
-  <div class="chart-wrapper">
-    <UCard class="flex flex-col p-4">
-      <template #header>
-        <div class="text-sm font-medium text-gray-400 uppercase tracking-wider">
-          Portfolio Value
-        </div>
-      </template>
-
+  <div class="chart-wrapper w-full h-full flex flex-col">
+    <UCard class="flex flex-col p-4 h-full overflow-hidden">
       <div
         v-if="error"
         class="flex items-center justify-center py-8 text-red-400"
@@ -15,12 +9,12 @@
       </div>
 
       <template v-else>
-        <div class="flex items-start justify-between mb-6">
+        <div class="flex items-start justify-between mb-3 flex-shrink-0">
           <div class="flex flex-col gap-1">
-            <div class="text-3xl font-bold tracking-tight">
+            <div class="text-2xl font-bold tracking-tight">
               {{ formattedEquity }}
             </div>
-            <div class="flex items-center gap-3 text-sm">
+            <div class="flex items-center gap-2 text-xs">
               <span
                 :class="changeColor"
                 class="font-medium"
@@ -35,15 +29,15 @@
               </span>
             </div>
           </div>
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-1 flex-shrink-0">
             <USelect
               v-model="timeframe"
               :options="timeframes"
-              size="md"
+              size="sm"
             />
             <UButton
               icon="i-heroicons-arrow-path"
-              size="md"
+              size="sm"
               color="primary"
               variant="solid"
               :loading="status === 'pending'"
@@ -52,7 +46,9 @@
           </div>
         </div>
 
-        <ag-charts :options="options" />
+        <div class="flex-1 min-h-0">
+          <ag-charts :options="options" />
+        </div>
       </template>
     </UCard>
   </div>
